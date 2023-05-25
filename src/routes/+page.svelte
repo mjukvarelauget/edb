@@ -18,16 +18,13 @@
 			<div class="active">
 				<img src={episodes[active].coverArt.asset.url} alt="" />
 				<div>
-					<p>{episodes[active].title}</p>
-					<audio class="audio" controls>
-						<source src={episodes[active].file.asset.url} type="audio/mpeg" />
-					</audio>
+					<p class="title">{episodes[active].title}</p>
+					<audio src={episodes[active].file.asset.url} class="audio" controls />
 				</div>
 			</div>
 			{#each episodes as episode, i}
 				<button class="track" on:click={() => setActive(i)}>
 					<div class={active === i ? 'active-track' : 'inactive-track'} />
-
 					<span>{i + 1}. {episode.title}</span>
 				</button>
 			{/each}
@@ -53,6 +50,7 @@
 
 	.wrapper {
 		height: 100%;
+		margin-top: 64px;
 	}
 
 	.track {
@@ -73,6 +71,10 @@
 		height: 1em;
 		background-color: #fadfa3;
 		margin-right: 4px;
+	}
+
+	.title {
+		margin-left: 20px;
 	}
 
 	.inactive-track {
