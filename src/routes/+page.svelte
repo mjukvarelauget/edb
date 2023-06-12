@@ -12,7 +12,7 @@
 
 <div class="container">
 	<h1>EDB er dyrt og vanskelig</h1>
-	<h2>En serie om hvorfor IT-prosjekter som regel går dårlig</h2>
+	<h2>En podcast om IT og hvorfor det burde ungås</h2>
 	<div class="wrapper">
 		<div class="player">
 			<div class="active">
