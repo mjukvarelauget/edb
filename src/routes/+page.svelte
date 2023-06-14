@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type { Episode } from '../types/podcastType';
+	import type { Episode, Podcast } from '../types/podcastType';
 
-	export let data: { episodes: Episode[] };
-	const { episodes } = data;
+	export let data: { episodes: Episode[]; podcast: Podcast };
+	const { episodes, podcast } = data;
 
 	let active = 0;
 	const setActive = (i: number) => {
@@ -10,9 +10,9 @@
 	};
 </script>
 
-<div class="container">
-	<h1>EDB er dyrt og vanskelig</h1>
-	<h2>En podcast om IT og hvorfor det burde ungås</h2>
+<main class="container">
+	<h1>{podcast.title}</h1>
+	<h2>{podcast.subtitle}</h2>
 	<div class="wrapper">
 		<div class="player">
 			<div class="active">
@@ -30,16 +30,16 @@
 			{/each}
 		</div>
 	</div>
-</div>
+</main>
+<footer class="footer">
+	{#each podcast.externalLinks as { href, icon, label }}
+		<a {href} target="_blank" class="social">
+			<img height={24} src={icon.asset.url} alt={label} />
+		</a>
+	{/each}
+</footer>
 
 <style>
-	h1,
-	h2,
-	span,
-	p {
-		font-family: 'Cutive mono', sans-serif;
-	}
-
 	.container {
 		width: 100vw;
 		display: flex;
@@ -106,5 +106,18 @@
 	audio::-webkit-media-controls-play-button,
 	audio::-webkit-media-controls-panel {
 		background-color: white;
+	}
+
+	.footer {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		margin-top: 8px;
+	}
+
+	.social {
+		display: flex;
+		align-items: center;
+		margin: 8px;
 	}
 </style>

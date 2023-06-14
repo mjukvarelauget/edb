@@ -13,3 +13,17 @@ export type Episode = {
 	_createdAt: string;
 	_id: string;
 };
+
+export type Podcast = {
+	title: string;
+	subtitle: string;
+	externalLinks: {
+		label: string;
+		icon: {
+			asset: {
+				url: string;
+			};
+		};
+		href: string;
+	}[];
+};

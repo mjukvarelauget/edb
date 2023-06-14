@@ -12,6 +12,19 @@ export const load = async () => {
       ...,
       asset -> {...},
     }
-  }`);
-	return { episodes };
+  } | order(_createdAt desc)`);
+
+	const podcast = await client.fetch(
+		`*[_type == 'podcast' && slug.current == 'edb-er-dyrt-og-vanskelig'][0]{
+      ...,
+      externalLinks[] {
+        ...,
+        icon {
+          asset -> {...}
+        }
+      }
+    }`
+	);
+
+	return { episodes, podcast };
 };
