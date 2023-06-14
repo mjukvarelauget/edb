@@ -40,6 +40,12 @@
 </footer>
 
 <style>
+	h1,
+	h2,
+	span,
+	p {
+		font-family: 'Cutive mono', sans-serif;
+	}
 	.container {
 		width: 100vw;
 		display: flex;
