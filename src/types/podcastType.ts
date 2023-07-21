@@ -9,9 +9,17 @@ export type Episode = {
 		asset: {
 			url: string;
 		};
+		caption?: string;
 	};
 	_createdAt: string;
 	_id: string;
+};
+
+export type EpisodeWithNotes = Episode & {
+	notes: {
+		body: any[];
+		title: string;
+	};
 };
 
 export type Podcast = {
