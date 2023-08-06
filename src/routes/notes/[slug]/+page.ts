@@ -1,5 +1,5 @@
 import { client } from '../../../sanityClient';
-import type {  EpisodeWithNotes } from '../../../types/podcastType';
+import type { EpisodeWithNotes } from '../../../types/podcastType';
 
 export async function load({ params }: { params: { slug: string } }) {
 	const { slug } = params;
@@ -11,7 +11,13 @@ export async function load({ params }: { params: { slug: string } }) {
       ...,
       asset -> {...},
     },
-		notes -> {...},
+		notes -> {
+      ...,
+      mainImage {
+        ..., 
+        asset -> {...},
+      }
+    },
     coverArt {
       ...,
       asset -> {...},

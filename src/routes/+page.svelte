@@ -16,7 +16,7 @@
 	<div class="wrapper">
 		<div class="player">
 			<div class="active">
-				<img src={episodes[active].coverArt.asset.url} alt="" />
+				<img class="cover-image" src={episodes[active].coverArt.asset.url} alt="" />
 				<div>
 					<p class="title">{episodes[active].title}</p>
 					<audio src={episodes[active].file.asset.url} class="audio" controls />
@@ -104,6 +104,7 @@
 	.active > img {
 		height: 92px;
 		width: 92px;
+		object-fit: contain;
 	}
 
 	.active > div {

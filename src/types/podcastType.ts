@@ -1,3 +1,12 @@
+import type { InputValue } from "@portabletext/svelte/ptTypes";
+
+type SanityImage = {
+	asset: {
+		url: string;
+	};
+	caption?: string;
+};
+
 export type Episode = {
 	title: string;
 	file: {
@@ -5,20 +14,16 @@ export type Episode = {
 			url: string;
 		};
 	};
-	coverArt: {
-		asset: {
-			url: string;
-		};
-		caption?: string;
-	};
+	coverArt: SanityImage;
 	_createdAt: string;
 	_id: string;
 };
 
 export type EpisodeWithNotes = Episode & {
 	notes: {
-		body: any[];
+		body: InputValue
 		title: string;
+		mainImage: SanityImage;
 	};
 };
 
