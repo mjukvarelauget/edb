@@ -1,28 +1,18 @@
 import { client } from '../../../sanityClient';
-import type { EpisodeWithNotes } from '../../../types/podcastType';
+import type { Note } from '../../../types/podcastType';
 
 export async function load({ params }: { params: { slug: string } }) {
 	const { slug } = params;
 
-	const episode: EpisodeWithNotes =
-		await client.fetch(`*[_type == 'episode' && slug.current == '${slug}'][0] {
-    ...,
-    file {
-      ...,
-      asset -> {...},
-    },
-		notes -> {
+	const note: Note = await client.fetch(`*[_type == 'post' && slug.current == '${slug}'][0] {
       ...,
       mainImage {
         ..., 
         asset -> {...},
-      }
-    },
-    coverArt {
-      ...,
-      asset -> {...},
-    }
+      },
+      sources[] -> {...}
+    
   }`);
-	console.log(episode);
-	return { episode };
+  
+	return { note };
 }

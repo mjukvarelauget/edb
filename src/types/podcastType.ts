@@ -1,4 +1,4 @@
-import type { InputValue } from "@portabletext/svelte/ptTypes";
+import type { InputValue } from '@portabletext/svelte/ptTypes';
 
 type SanityImage = {
 	asset: {
@@ -19,12 +19,16 @@ export type Episode = {
 	_id: string;
 };
 
-export type EpisodeWithNotes = Episode & {
-	notes: {
-		body: InputValue
-		title: string;
-		mainImage: SanityImage;
-	};
+export type Note = {
+	body: InputValue;
+	title: string;
+	mainImage: SanityImage;
+	sources: {
+		_id: string;
+		source: string;
+		url: string;
+	}[];
+	slug: string;
 };
 
 export type Podcast = {
