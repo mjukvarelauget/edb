@@ -16,7 +16,7 @@
 	<div class="wrapper">
 		<div class="player">
 			<div class="active">
-				<img src={episodes[active].coverArt.asset.url} alt="" />
+				<img class="cover-image" src={episodes[active].coverArt.asset.url} alt="" />
 				<div>
 					<p class="title">{episodes[active].title}</p>
 					<audio src={episodes[active].file.asset.url} class="audio" controls />
@@ -40,12 +40,6 @@
 </footer>
 
 <style>
-	h1,
-	h2,
-	span,
-	p {
-		font-family: 'Cutive mono', sans-serif;
-	}
 	.container {
 		width: 100vw;
 		display: flex;
@@ -57,6 +51,12 @@
 	.wrapper {
 		height: 100%;
 		margin-top: 64px;
+		width: 600px;
+	}
+	@media only screen and (max-width: 736px) {
+		.wrapper {
+			width: calc(100vw - 20px);
+		}
 	}
 
 	.track {
@@ -80,7 +80,7 @@
 	}
 
 	.title {
-		margin-left: 20px;
+		margin: 20px 20px 0;
 	}
 
 	.inactive-track {
@@ -93,22 +93,30 @@
 		display: flex;
 		flex-direction: column;
 		border: 1px solid lightgray;
-		max-width: 600px;
+		flex-grow: 1;
 	}
 
 	.active {
 		display: flex;
 		width: 100%;
+		flex-grow: 1;
 	}
 	.active > img {
 		height: 92px;
 		width: 92px;
+		object-fit: contain;
 	}
 
 	.active > div {
 		padding: 4px 8px;
+		flex-grow: 1;
 	}
 
+	.audio {
+		width: 100%;
+		flex-grow: 1;
+		min-width: 100px;
+	}
 	audio::-webkit-media-controls-play-button,
 	audio::-webkit-media-controls-panel {
 		background-color: white;
