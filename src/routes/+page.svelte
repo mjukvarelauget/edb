@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Episode, Podcast } from '../types/podcastType';
+	import pad from 'left-pad';
 
 	export let data: { episodes: Episode[]; podcast: Podcast };
 	const { episodes, podcast } = data;
@@ -25,7 +26,7 @@
 			{#each episodes as episode, i}
 				<button class="track" on:click={() => setActive(i)}>
 					<div class={active === i ? 'active-track' : 'inactive-track'} />
-					<span>{i + 1}. {episode.title}</span>
+					<span>{pad(`${episodes.length - i}`, 2, '0')}. {episode.title}</span>
 				</button>
 			{/each}
 		</div>
